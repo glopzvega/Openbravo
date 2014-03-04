@@ -1,0 +1,32 @@
+Configuracion de Cuentas Contables Estado de Resultados
+
+401 Ingreso
+410 Gasto
+VN Ingreso 401 - 410
+
+501 Gasto
+505 Ingreso
+CN Gasto 501 - 505
+
+UB Ingreso
+
+510 Gasto
+511 Gasto
+512 Gasto
+513 Gasto
+.
+.
+.
+GO Gasto
+
+UO Ingreso (UB - GO)
+
+550 Gasto
+551 Gasto
+552 Gasto
+553 Gasto
+GYPF Gasto
+
+UAI Ingreso (UO - GYPF)
+
+UN Ingreso (UAI - 600)

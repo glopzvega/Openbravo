@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ob:Openbravo xmlns:ob="http://www.openbravo.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OBTL_Tax_Report id="8010764181C04251832CE03462FBB688" identifier="Diot Fiscal Report">
+    <id>8010764181C04251832CE03462FBB688</id>
+    <active>true</active>
+    <searchKey>DiotFiscalReport</searchKey>
+    <name>Diot Fiscal Report</name>
+    <period>M</period>
+    <description xsi:nil="true"/>
+    <javaClassName>com.desiteg.ob.howtos.diot.DiotFiscalReport</javaClassName>
+    <oBTLTaxReportGroupList>
+      <OBTL_Tax_Report_Group id="38181FDCBDC84BD79045A59F6BBBB3A5" identifier="Diot Fiscal Report - IVA_NORMAL">
+        <id>38181FDCBDC84BD79045A59F6BBBB3A5</id>
+        <active>true</active>
+        <taxReport id="8010764181C04251832CE03462FBB688" entity-name="OBTL_Tax_Report" identifier="Diot Fiscal Report"/>
+        <searchKey>IVA_NORMAL</searchKey>
+        <name>IVA_NORMAL</name>
+        <sequenceNumber>20</sequenceNumber>
+        <description xsi:nil="true"/>
+        <oBTLTaxReportParameterList>
+          <OBTL_Tax_Report_Parameter id="C62CC37AB4FA4EB5AD65477210638F48" identifier="Diot Fiscal Report - IVA_NORMAL - Compras IVA Normal -  -  - ">
+            <id>C62CC37AB4FA4EB5AD65477210638F48</id>
+            <active>true</active>
+            <searchKey>IVA_NORMAL</searchKey>
+            <name>Compras IVA Normal</name>
+            <sequenceNumber>10</sequenceNumber>
+            <type>O</type>
+            <inputtype xsi:nil="true"/>
+            <description xsi:nil="true"/>
+            <constantValue xsi:nil="true"/>
+            <taxReportGroup id="38181FDCBDC84BD79045A59F6BBBB3A5" entity-name="OBTL_Tax_Report_Group" identifier="Diot Fiscal Report - IVA_NORMAL"/>
+            <tributaryKey xsi:nil="true"/>
+            <tributarySubkey xsi:nil="true"/>
+            <obtlTransactioncode xsi:nil="true"/>
+          </OBTL_Tax_Report_Parameter>
+        </oBTLTaxReportParameterList>
+      </OBTL_Tax_Report_Group>
+      <OBTL_Tax_Report_Group id="5148581C801C460C929AE8EFA53848BD" identifier="Diot Fiscal Report - Configuración Reporte">
+        <id>5148581C801C460C929AE8EFA53848BD</id>
+        <active>true</active>
+        <taxReport id="8010764181C04251832CE03462FBB688" entity-name="OBTL_Tax_Report" identifier="Diot Fiscal Report"/>
+        <searchKey>REPORT</searchKey>
+        <name>Configuración Reporte</name>
+        <sequenceNumber>40</sequenceNumber>
+        <description xsi:nil="true"/>
+        <oBTLTaxReportParameterList>
+          <OBTL_Tax_Report_Parameter id="4C060AB70BB14E8CABB887361C085B70" identifier="Diot Fiscal Report - Configuración Reporte - IVA Pendiente -  -  - ">
+            <id>4C060AB70BB14E8CABB887361C085B70</id>
+            <active>true</active>
+            <searchKey>IVA_PENDIENTE</searchKey>
+            <name>IVA Pendiente</name>
+            <sequenceNumber>20</sequenceNumber>
+            <type>I</type>
+            <inputtype>C</inputtype>
+            <description xsi:nil="true"/>
+            <constantValue xsi:nil="true"/>
+            <taxReportGroup id="5148581C801C460C929AE8EFA53848BD" entity-name="OBTL_Tax_Report_Group" identifier="Diot Fiscal Report - Configuración Reporte"/>
+            <tributaryKey xsi:nil="true"/>
+            <tributarySubkey xsi:nil="true"/>
+            <obtlTransactioncode xsi:nil="true"/>
+          </OBTL_Tax_Report_Parameter>
+          <OBTL_Tax_Report_Parameter id="5FD36B7F42D744DFBD901530A5F37FE7" identifier="Diot Fiscal Report - Configuración Reporte - IVA Normal -  -  - ">
+            <id>5FD36B7F42D744DFBD901530A5F37FE7</id>
+            <active>true</active>
+            <searchKey>IVA_NORMAL</searchKey>
+            <name>IVA Normal</name>
+            <sequenceNumber>10</sequenceNumber>
+            <type>I</type>
+            <inputtype>C</inputtype>
+            <description xsi:nil="true"/>
+            <constantValue xsi:nil="true"/>
+            <taxReportGroup id="5148581C801C460C929AE8EFA53848BD" entity-name="OBTL_Tax_Report_Group" identifier="Diot Fiscal Report - Configuración Reporte"/>
+            <tributaryKey xsi:nil="true"/>
+            <tributarySubkey xsi:nil="true"/>
+            <obtlTransactioncode xsi:nil="true"/>
+          </OBTL_Tax_Report_Parameter>
+        </oBTLTaxReportParameterList>
+      </OBTL_Tax_Report_Group>
+      <OBTL_Tax_Report_Group id="56FB04584F5B4BE4BE0660AEFECEE067" identifier="Diot Fiscal Report - IVA_PENDIENTE">
+        <id>56FB04584F5B4BE4BE0660AEFECEE067</id>
+        <active>true</active>
+        <taxReport id="8010764181C04251832CE03462FBB688" entity-name="OBTL_Tax_Report" identifier="Diot Fiscal Report"/>
+        <searchKey>IVA_PENDIENTE</searchKey>
+        <name>IVA_PENDIENTE</name>
+        <sequenceNumber>30</sequenceNumber>
+        <description xsi:nil="true"/>
+        <oBTLTaxReportParameterList>
+          <OBTL_Tax_Report_Parameter id="4258FB6A6A824FEC87C59231F3D868E2" identifier="Diot Fiscal Report - IVA_PENDIENTE - Compras IVA Pendiente -  -  - ">
+            <id>4258FB6A6A824FEC87C59231F3D868E2</id>
+            <active>true</active>
+            <searchKey>IVA_PENDIENTE</searchKey>
+            <name>Compras IVA Pendiente</name>
+            <sequenceNumber>10</sequenceNumber>
+            <type>O</type>
+            <inputtype xsi:nil="true"/>
+            <description xsi:nil="true"/>
+            <constantValue xsi:nil="true"/>
+            <taxReportGroup id="56FB04584F5B4BE4BE0660AEFECEE067" entity-name="OBTL_Tax_Report_Group" identifier="Diot Fiscal Report - IVA_PENDIENTE"/>
+            <tributaryKey xsi:nil="true"/>
+            <tributarySubkey xsi:nil="true"/>
+            <obtlTransactioncode xsi:nil="true"/>
+          </OBTL_Tax_Report_Parameter>
+        </oBTLTaxReportParameterList>
+      </OBTL_Tax_Report_Group>
+      <OBTL_Tax_Report_Group id="F839B715092D41A99E51DD0068D1C3E8" identifier="Diot Fiscal Report - Configuracion">
+        <id>F839B715092D41A99E51DD0068D1C3E8</id>
+        <active>true</active>
+        <taxReport id="8010764181C04251832CE03462FBB688" entity-name="OBTL_Tax_Report" identifier="Diot Fiscal Report"/>
+        <searchKey>CONFIG</searchKey>
+        <name>Configuracion</name>
+        <sequenceNumber>10</sequenceNumber>
+        <description xsi:nil="true"/>
+        <oBTLTaxReportParameterList>
+          <OBTL_Tax_Report_Parameter id="78D0379777AF49819F6AD04D943B056D" identifier="Diot Fiscal Report - Configuracion - Mostrar Transacciones -  -  - ">
+            <id>78D0379777AF49819F6AD04D943B056D</id>
+            <active>true</active>
+            <searchKey>Facturas</searchKey>
+            <name>Mostrar Transacciones</name>
+            <sequenceNumber>10</sequenceNumber>
+            <type>I</type>
+            <inputtype>C</inputtype>
+            <description xsi:nil="true"/>
+            <constantValue xsi:nil="true"/>
+            <taxReportGroup id="F839B715092D41A99E51DD0068D1C3E8" entity-name="OBTL_Tax_Report_Group" identifier="Diot Fiscal Report - Configuracion"/>
+            <tributaryKey xsi:nil="true"/>
+            <tributarySubkey xsi:nil="true"/>
+            <obtlTransactioncode xsi:nil="true"/>
+          </OBTL_Tax_Report_Parameter>
+        </oBTLTaxReportParameterList>
+      </OBTL_Tax_Report_Group>
+    </oBTLTaxReportGroupList>
+  </OBTL_Tax_Report>
+</ob:Openbravo>

@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+  <database name="TABLE OBTL_TAX_REPORT_PARAMETER">
+    <table name="OBTL_TAX_REPORT_PARAMETER" primaryKey="OBTL_TAX_REPORT_PARAMETER_KEY">
+      <column name="OBTL_TAX_REPORT_PARAMETER_ID" primaryKey="true" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="AD_CLIENT_ID" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="AD_ORG_ID" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="CREATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
+        <default><![CDATA[SYSDATE]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="CREATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="UPDATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
+        <default><![CDATA[SYSDATE]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="UPDATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="ISACTIVE" primaryKey="false" required="true" type="CHAR" size="1" autoIncrement="false">
+        <default><![CDATA[Y]]></default>
+        <onCreateDefault/>
+      </column>
+      <column name="VALUE" primaryKey="false" required="true" type="NVARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="NAME" primaryKey="false" required="true" type="NVARCHAR" size="255" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="SEQNO" primaryKey="false" required="false" type="DECIMAL" size="10,0" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="TYPE" primaryKey="false" required="true" type="VARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="INPUTTYPE" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="DESCRIPTION" primaryKey="false" required="false" type="NVARCHAR" size="255" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="CONSTANTVALUE" primaryKey="false" required="false" type="NVARCHAR" size="60" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="OBTL_TAX_REPORT_GROUP_ID" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="OBTL_TRIBUTARYKEY_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="OBTL_TRIBUTARYSUBKEY_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <column name="OBTL_TRANSACTIONCODE_ID" primaryKey="false" required="false" type="VARCHAR" size="32" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
+      <foreign-key foreignTable="OBTL_TAX_REPORT_GROUP" name="OBTL_TAXREPGRP_OBTLTAXREPPARAM">
+        <reference local="OBTL_TAX_REPORT_GROUP_ID" foreign="OBTL_TAX_REPORT_GROUP_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="AD_CLIENT" name="OBTL_TAXREPORTPARAM_ADCLIENT">
+        <reference local="AD_CLIENT_ID" foreign="AD_CLIENT_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="AD_ORG" name="OBTL_TAXREPORTPARAM_ADORG">
+        <reference local="AD_ORG_ID" foreign="AD_ORG_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="OBTL_TRANSACTIONCODE" name="OBTL_TRANSCODE_OBTLTAXREPPARAM">
+        <reference local="OBTL_TRANSACTIONCODE_ID" foreign="OBTL_TRANSACTIONCODE_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="OBTL_TRIBUTARYKEY" name="OBTL_TRIBKEY_OB_TAXREPORTPARAM">
+        <reference local="OBTL_TRIBUTARYKEY_ID" foreign="OBTL_TRIBUTARYKEY_ID"/>
+      </foreign-key>
+      <foreign-key foreignTable="OBTL_TRIBUTARYSUBKEY" name="OBTL_TRIBSUBKEY_BTLTAXREPPARAM">
+        <reference local="OBTL_TRIBUTARYSUBKEY_ID" foreign="OBTL_TRIBUTARYSUBKEY_ID"/>
+      </foreign-key>
+      <unique name="OBTL_REPORTPARAM_VALUEP_UN">
+        <unique-column name="OBTL_TAX_REPORT_GROUP_ID"/>
+        <unique-column name="VALUE"/>
+      </unique>
+      <check name="OBTL_TAXREPPARAM_ISACTIVE_CHK"><![CDATA[ISACTIVE IN ('Y', 'N')]]></check>
+      <check name="OBTL_TAXREPPARAM_TYPE_CHK"><![CDATA[TYPE IN ('O', 'I', 'C')]]></check>
+    </table>
+  </database>

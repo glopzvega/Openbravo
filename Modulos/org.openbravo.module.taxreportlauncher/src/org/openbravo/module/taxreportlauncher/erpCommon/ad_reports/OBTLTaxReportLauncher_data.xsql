@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SqlClass name="OBTLTaxReportLauncherData" package="org.openbravo.module.taxreportlauncher.erpCommon.ad_reports">
+  <SqlMethod name="select" type="preparedStatement" return="multiple">
+    <SqlMethodComment></SqlMethodComment>
+    <Sql>
+      <![CDATA[
+        select (case when p.inputtype='T' then p.obtl_tax_report_parameter_id else '' end) as textId,
+               (case when p.inputtype='T' then '' else 'none' end) as showText,
+               (case when p.inputtype='C' then p.obtl_tax_report_parameter_id else '' end) as checkId, 
+               (case when p.inputtype='C' then '' else 'none' end) as showCheck,
+               (case when p.inputtype='T' then 'TextBox_ContentCell' else 'Radio_Check_ContentCell' end) as cellclass,
+               g.name as groupName, p.obtl_tax_report_parameter_id as id, p.name as labelParameter, 
+               g.obtl_tax_report_group_id as taxReportGroup, 
+               '' as defaulttext, '' as defaultcheck
+        from obtl_tax_report r, obtl_tax_report_group g, obtl_tax_report_parameter p
+        where g.obtl_tax_report_id = r.obtl_tax_report_id
+          and g.obtl_tax_report_group_id = p.obtl_tax_report_group_id
+          and p.type = 'I'
+          and r.obtl_tax_report_id = ?
+          and r.isactive = 'Y' and g.isactive='Y' and p.isactive='Y'
+        order by g.seqno, p.seqno
+      ]]>
+    </Sql>
+    <Field name="rownum" value="count"/>
+    <Parameter name="reportId"/>
+  </SqlMethod>
+</SqlClass>

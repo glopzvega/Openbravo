@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*************************************************************************
+* The contents of this file are subject to the Openbravo  Public  License
+* Version  1.0  (the  "License"),  being   the  Mozilla   Public  License
+* Version 1.1  with a permitted attribution clause; you may not  use this
+* file except in compliance with the License. You  may  obtain  a copy of
+* the License at http://www.openbravo.com/legal/license.html 
+* Software distributed under the License  is  distributed  on  an "AS IS"
+* basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+* License for the specific  language  governing  rights  and  limitations
+* under the License. 
+* The Original Code is Openbravo ERP. 
+* The Initial Developer of the Original Code is Openbravo SLU 
+* All portions are Copyright (C) 2009 Openbravo SLU 
+* All Rights Reserved. 
+* Contributor(s):  ______________________________________.
+************************************************************************
+-->
+<REPORT>
+  <template file="OBTL_TaxReportLauncher_PopUp.html"/>
+  <PARAMETER id="paramLanguage" name="language" default=""/>
+  <PARAMETER id="paramDirectory" name="directory" default=""/>
+  <PARAMETER id="paramCSS" name="theme" attribute="href" replace="Default"/>
+
+  <PARAMETER id="inpOrganization" name="inpOrganization" attribute="value"/>
+  <PARAMETER id="inpReport" name="inpReport" attribute="value"/>
+  <PARAMETER id="inpcAcctSchema" name="inpcAcctSchema" attribute="value"/>
+  <PARAMETER id="inpcCalendar" name="inpcCalendar" attribute="value"/>
+  <PARAMETER id="inpYear" name="inpYear" attribute="value"/>
+  <PARAMETER id="inpPeriod" name="inpPeriod" attribute="value"/>
+
+  <PARAMETER id="messageBoxID" name="messageType" attribute="class" replace="yy" default="HIDDEN"/>
+  <PARAMETER id="messageBoxIDTitle" name="messageTitle" default=""/>
+  <PARAMETER id="messageBoxIDMessage" name="messageMessage" default=""/>
+
+  <PARAMETER id="fieldCheckValue" name="check" default="Y"/>
+
+  <STRUCTURE name="structure">
+    <FIELD id="fieldCell" attribute="class" replace="xx">cellclass</FIELD>
+    <FIELD id="fieldGroup">groupname</FIELD>
+    <FIELD id="labelParameter">labelparameter</FIELD>
+    <FIELD id="fieldText" attribute="name" replace="xx">textid</FIELD>
+    <FIELD id="fieldText" attribute="style" replace="none">showtext</FIELD>
+    <FIELD id="fieldCheck" attribute="name" replace="xx">checkid</FIELD>
+    <FIELD id="fieldCheck" attribute="style" replace="none">showcheck</FIELD>
+    <FIELD id="fieldText" attribute="value">defaulttext</FIELD>
+    <FIELD id="fieldCheck" boolean="checked" withId="fieldCheckValue">defaultcheck</FIELD>
+    <SECTION id="sectionDetailGroup" field="taxreportgroup"/>
+    <SECTION id="sectionDetailRow"/>
+  </STRUCTURE>
+</REPORT>
