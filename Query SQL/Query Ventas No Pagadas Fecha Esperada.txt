@@ -1,0 +1,62 @@
+Buscar Pagos en una fecha especifica
+select c_invoice_id as referencekey_id,
+       documentno as record_id,
+       0 as ad_role_id,
+       null as ad_user_id,
+       ad_column_identifier('C_Invoice',c_invoice_id,'en_US') as description,
+       'Y' as isActive,
+        ad_org_id, 
+        ad_client_id, 
+        now() as created,  
+        0 as createdBy,  
+        now() as updated,
+        0 as updatedBy
+from c_invoice as c, fin_payment_schedule as fin where c.ispaid='N' and c.issotrx='Y' and fin.expecteddate='03-01-2013 00:00:00' and c.c_invoice_id = fin.c_invoice_id
+
+Buscar Pagos entre fechas dadas
+select c_invoice_id as referencekey_id,
+       documentno as record_id,
+       0 as ad_role_id,
+       null as ad_user_id,
+       ad_column_identifier('C_Invoice',c_invoice_id,'en_US') as description,
+       'Y' as isActive,
+        ad_org_id, 
+        ad_client_id, 
+        now() as created,  
+        0 as createdBy,  
+        now() as updated,
+        0 as updatedBy
+from c_invoice as c, fin_payment_schedule as fin where c.ispaid='N' and c.issotrx='Y' and fin.expecteddate between '01-01-2013 00:00:00' and '31-01-2013 00:00:00'  and c.c_invoice_id = fin.c_invoice_id
+
+Buscar Pagos Tomando la fecha de hoy como parametro
+select c.c_invoice_id as referencekey_id,
+       c.documentno as record_id,
+       0 as ad_role_id,
+       null as ad_user_id,
+       ad_column_identifier('C_Invoice',c.c_invoice_id,'en_US') as description,
+       'Y' as isActive,
+        c.ad_org_id, 
+        c.ad_client_id, 
+        now() as created,  
+        0 as createdBy,  
+        now() as updated,
+        0 as updatedBy
+from c_invoice as c, fin_payment_schedule as fin 
+where c.ispaid='N' and c.issotrx='Y' and fin.expecteddate > now() and (now() + interval  '7 days') >= fin.expecteddate and c.c_invoice_id = fin.c_invoice_id
+
+Facturas Pendientes de Pago/Cobro en los proximos 2 dias
+select c.c_invoice_id as referencekey_id,
+       c.documentno as record_id,
+       0 as ad_role_id,
+       null as ad_user_id,
+       ad_column_identifier('C_Invoice',c.c_invoice_id,'en_US') as description,
+       'Y' as isActive,
+        c.ad_org_id, 
+        c.ad_client_id, 
+        now() as created,  
+        0 as createdBy,  
+        now() as updated,
+        0 as updatedBy
+from c_invoice as c, fin_payment_schedule as fin  
+where c.ispaid='N' and c.issotrx='N' and  fin.expecteddate >= current_date and (current_date + interval  '2 days') >= fin.expecteddate and c.c_invoice_id = fin.c_invoice_id
+

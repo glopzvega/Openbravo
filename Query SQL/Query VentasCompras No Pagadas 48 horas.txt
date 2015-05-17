@@ -1,0 +1,15 @@
+Buscar Ordenes que no hayan sido facturadas
+select c.c_invoice_id as referencekey_id,
+       c.documentno as record_id,
+       0 as ad_role_id,
+       null as ad_user_id,
+       ad_column_identifier('C_Invoice',c.c_invoice_id,'en_US') as description,
+       'Y' as isActive,
+        c.ad_org_id, 
+        c.ad_client_id, 
+        now() as created,  
+        0 as createdBy,  
+        now() as updated,
+        0 as updatedBy
+from c_invoice as c, fin_payment_schedule as fin  
+where c.ispaid='N' and c.issotrx='N' and  fin.expecteddate >= current_date and (current_date + interval  '2 days') >= fin.expecteddate and c.c_invoice_id = fin.c_invoice_id

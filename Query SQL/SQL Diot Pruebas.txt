@@ -1,0 +1,37 @@
+
+select * from c_invoicetax as it
+inner join c_invoice as i on (it.c_invoice_id = i.c_invoice_id)
+inner join c_bpartner as bp on(i.c_bpartner_id = bp.c_bpartner_id)
+where exists (select 1 from fact_acct as fa where i.c_invoice_id = fa.record_id and 
+fa.c_acctschema_id = '32A909C4DE6D43C59358CC879D42660C' and ad_table_id = '318')
+and extract (month from i.lastcalculatedondate) = extract (month from current_date)
+and i.issotrx = 'N'
+and i.ad_client_id = 'FC4DE93542B94C18A12B5E286132DA6B' 
+and i.ad_org_id ='1721CE11336E47E2BE16B7B65C59BB06'
+
+
+
+select * from c_invoicetax as it
+inner join c_invoice as i on (it.c_invoice_id = i.c_invoice_id)
+inner join c_bpartner as bp on(i.c_bpartner_id = bp.c_bpartner_id)
+//inner join fin_payment as fp on(fp.c_bpartner_id = bp.c_bpartner_id)
+//inner join fin_payment_detail_v as tx on (fp.fin_payment_id = tx.fin_payment_id)
+where exists (select 1 from fact_acct as fa where i.c_invoice_id = fa.record_id and fa.c_acctschema_id = '32A909C4DE6D43C59358CC879D42660C' and ad_table_id = '318')
+and extract (month from i.lastcalculatedondate) = extract (month from current_date)
+and i.issotrx = 'N'
+and i.ad_client_id = 'FC4DE93542B94C18A12B5E286132DA6B' 
+and i.ad_org_id ='1721CE11336E47E2BE16B7B65C59BB06'
+//and i.documentno = tx.invoiceno
+and i.documentno in (
+        select tx.invoiceno from fin_payment as fp 
+        inner join fin_payment_detail_v as tx on (fp.fin_payment_id = tx.fin_payment_id)
+        where extract (month from i.lastcalculatedondate) = extract (month from current_date)        
+        )   
+		
+		
+select tx.invoiceno, fp.amount, fp.c_bpartner_id from fin_payment as fp 
+inner join fin_payment_detail_v as tx on (fp.fin_payment_id = tx.fin_payment_id)
+where fp.ad_org_id in ('1721CE11336E47E2BE16B7B65C59BB06')
+and fp.ad_client_id in ('FC4DE93542B94C18A12B5E286132DA6B')
+and tx.invoiceno in ('1000000', '10000000', '10000001', '10000002')
+order by tx.invoiceno

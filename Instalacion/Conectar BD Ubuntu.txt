@@ -1,0 +1,64 @@
+Conectar a base de datos PostgreSQL Openbravo Ubuntu
+
+Openbravo uses its own Tomcat and PostgreSQL configuration, for this reason these ports are not the standard ones:
+
+Openbravo PostgreSQL port: 5932 (username: tad; password: tad)
+Openbravo PostgreSQL cluster configuration: /etc/postgresql/8.4/openbravo-3/
+
+To connect to the database you can use:
+	psql -d openbravo -U tad -h localhost -p 5932
+	
+La configuracion de Openbravo Ubuntu restringe la conectividad solo a localhost, para permitir el acceso desde otras maquinas de la red
+se debe realizar lo siguiente:
+
+/*Opcional
+	1) habilitar el puerto del openbravo en el Firewall
+	
+	http://www.ubuntu-es.org/node/129680#.URWDeKWZR1k
+	http://usemoslinux.blogspot.com/2011/03/como-configurar-el-firewall-en-ubuntu.html
+		
+		-instalar el firewall
+		sudo apt-get install gufw
+		
+		-Habilitar el firewall
+		sudo ufw enable
+		
+		-Agregamos el puerto en Sistema/Administracion/Configuracion del Cortafuegos
+		
+		-Habilitamos la conexion entrante y saliente
+		
+		-Añadir regla, tipo Simple, introduciomos el puerto 5932
+		
+		-Agregar puerto desde la consola (opcional)
+		sudo ufw allow 5932 
+*/
+	2) Modificar los archivos pg_hba.conf y postgresql.conf en /etc/postgresql/8.4/openbravo-3
+	
+	http://www.postgresql.org.es/node/405
+	http://www.forosdelweb.com/f99/pg_hba-conf-postgresql-conf-595925/
+	
+		
+		-Detenemos el postgres (en este caso podemos detener todo el openbravo en /etc/init.d
+		service openbravo stop
+		
+		-pg_hba.conf
+		http://www.postgresql.org/docs/9.2/static/auth-pg-hba-conf.html
+		# IPv4 local connections:
+		host    all         all         127.0.0.1/32          trust
+		host    all         all         192.168.4/8 md5 (Agregar esta linea para indicarle que IP va a permitir en este caso las que comiencen con 192.168.4.X)
+		
+		-postgresql.conf
+		listen_addresses = '*' (Modificamos esta propiedad para que quede asi)
+	
+		Iniciamos nuevamente el postgres
+		service openbravo start
+		
+		Nos conectamos desde cualquier cliente de base de datos por ejemplo DBVisualizer 
+		
+		IP : 192.168.4.170 (ip del servidor)
+		Puerto: 5932
+		BD: openbravo
+		usuario: tad
+		password: tad
+		
+		

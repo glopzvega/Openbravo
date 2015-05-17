@@ -1,0 +1,33 @@
+select b.name, sum(it.taxbaseamt), sum(it.taxamt) from c_invoicetax as it inner join c_invoice as i 
+on (it.c_invoice_id = i.c_invoice_id)
+inner join c_bpartner as b on (i.c_bpartner_id = b.c_bpartner_id) where b.name = 'Happy Drinks, Inc.'
+group by b.name 
+
+/*Obtener InvoiceTax donde las facturas hayan sido facturadas*/
+select it from InvoiceTax as it 
+inner join fetch it.invoice as i 
+inner join fetch i.businessPartner
+where ( exists (select 1 from FinancialMgmtAccountingFact as fa 
+				where i.id = fa.recordID 
+				and fa.accountingSchema= :acctSchema 
+				and fa.table.id = :invoiceTableId ) 
+		and i.salesTransaction = 'N'
+		and i.posted='Y' 
+		and i.accountingDate>= :fromDate 
+		and i.accountingDate< :toDate 
+		and i.organization.id in (:orgs) 
+		and it.tax in (:taxes) ) 
+		and it.organization.id in ('E443A31992CB4635AFCAEABE7183CE85', '0', 'DC206C91AA6A4897B44DA897936E0EC3', '7BABA5FF80494CAFA54DEBD22EC46F01', 'BAE22373FEBE4CCCA24517E23F0C8A48', '19404EAD144C49A0AF37D54377CF452D', 'B843C30461EA4501935CB1D125C9C25A', '2E60544D37534C0B89E765FE29BC0B43') 
+		and it.client.id in ('23C59575B9CF467C9620760EB255B389', '0')
+
+whereClause.append(" order by i.businessPartner.taxID");		
+
+/*Obtener InvoiceTax donde las facturas hayan sido facturadas y pagadas*/
+		
+select * from fin_payment_detail_v as tx 
+inner join fin_payment as fp on(tx.fin_payment_id = fp.fin_payment_id)
+inner join c_invoice as i on (i.c_bpartner_id = fp.c_bpartner_id and i.documentno = tx.invoiceno)
+where extract (month from i.lastcalculatedondate) = extract (month from current_date)
+and i.issotrx = 'N'
+and i.ad_client_id = 'FC4DE93542B94C18A12B5E286132DA6B' 
+and i.ad_org_id ='1721CE11336E47E2BE16B7B65C59BB06'

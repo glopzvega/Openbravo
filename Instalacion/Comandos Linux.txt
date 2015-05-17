@@ -1,0 +1,8 @@
+Tareas iniciandose
+ps -aux | grep start
+
+??
+htop
+
+Servicios
+/etc/init.d/

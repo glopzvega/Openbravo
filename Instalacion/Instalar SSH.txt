@@ -1,0 +1,23 @@
+Instalar SSH Server
+
+	sudo apt-get install openssh-server
+	
+Editar archivo sshd_config para acceder con usuario root y que solicite contraseña
+
+	sudo vim /etc/ssh/sshd_config
+	
+Instalar vim editor
+
+	sudo apt-get install vim
+	
+Iniciar, Detener, Reiniciar y ver Status del SSH
+
+	sudo /etc/init.d/ssh start
+	sudo /etc/init.d/ssh stop
+	sudo /etc/init.d/ssh restart
+	sudo /etc/init.d/ssh status
+	
+Probar SSH
+
+	ssh 127.0.0.1
+	

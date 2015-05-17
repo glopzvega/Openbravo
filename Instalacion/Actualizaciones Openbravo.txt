@@ -1,0 +1,34 @@
+Actualizar Openbravo 
+
+---------Estabilizar la instancia------------
+	
+	1) Detener el Tomcat	
+		service openbravo-tomcat stop
+
+	2) Eliminar Cambios Locales				
+		ant update.database -Dlocal=no -Dforce=yes
+	
+	3) Compilar la instancia	
+		ant smartbuild
+		
+	4) Iniciar el Tomcat 		
+		service openbravo-tomcat start
+	
+---------Modificar la Instancia---------------
+	
+	Primero debemos estabilizar la instancia
+	
+	5) Instalar Actualizaciones o Modulos nuevos	
+		Via Module Management
+	
+	6) Detener el Tomcat	
+		service openbravo-tomcat stop
+		
+	7) Actualizar Base de Datos
+		ant update.database -Dlocal=no
+		
+	8) Compilar la instancia	
+		ant smartbuild
+		
+	9) Iniciar el Tomcat 		
+		service openbravo-tomcat start
